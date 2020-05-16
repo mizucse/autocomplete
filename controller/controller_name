@@ -1,0 +1,14 @@
+    public function autocomplete_view() {
+        $this->load->database();
+        $id = $_POST['id'];
+        $w = $this->session->userdata('wire');
+        if (!empty($w))
+            $this->db->where("(ware='" . $w . "' OR ware='0')");
+        $this->db->like('ledger_title', $id);
+        $info = $this->db->get('ledger');
+        $data = array();
+        foreach ($info->result_array() as $val) {
+            array_push($data, $val['ledger_title'] . "*" . $val['id']);
+        }
+        echo json_encode($data);
+    }
