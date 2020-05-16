@@ -20,7 +20,7 @@ $("#tag")
                     $.ajax({
                         type: 'POST',
                         dataType: 'json',
-                        url: li + 'transaction/autocomplete_view/',
+                        url: li + 'controller_name/autocomplete_view/',
                         data: {id: v},
                         success: function (data) {
                             response(data);
